@@ -20,7 +20,11 @@ export class ProductComponent implements OnInit {
   }
 
   getProducts(){
-    this.httpClient.get()
+    this.httpClient
+    .get<ProductResponseModel>(this.apiUrl)
+    .subscribe((response) =>{
+      this.products = response
+    })
   }
 
 }
