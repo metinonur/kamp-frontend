@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ProductResponseModel } from '../models/productResponseModel';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root', useClass: ProductService
 })
 export class ProductService {
 
