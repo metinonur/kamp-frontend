@@ -32,13 +32,14 @@ this.productAddForm= this.formBuilder.group({
   add(){
     if(this.productAddForm.valid){
       let productModule= Object.assign({},this.productAddForm.value) 
-      this.productService.add(productModule).subscribe(data=>{
+      this.productService.add(productModule).subscribe(response=>{
         
-        this.toastrService.success(data.message,"Başarılı!")
-      },dataError=>{
-        if(dataError.error.Errors.length>0){
-          for (let i = 0; i < dataError.error.Errors.length; i++) {
-            this.toastrService.error(dataError.error.Errors[i].ErrorMessage,"Doğrulama hatası")           
+        this.toastrService.success(response.message,"Başarılı!")
+      },responseError=>{
+        console.log(responseError.error.Errors)
+        if(responseError.error.Errors.length>0){
+          for (let i = 0; i < responseError.error.Errors.length; i++) {
+            this.toastrService.error(responseError.error.Errors[i].ErrorMessage,"Doğrulama hatası")           
           }
         }
         
